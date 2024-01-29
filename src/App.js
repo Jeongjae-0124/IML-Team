@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
+
 const App = () => {
   const [dots, setDots] = useState([]);
 
@@ -29,6 +31,7 @@ const App = () => {
           key={dot.id}
           style={{
             position: 'absolute',
+            
             width: '10px',
             height: '10px',
             boxShadow: '2px 2px lightgray',
