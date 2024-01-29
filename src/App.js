@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './App.css';
 
 const App = () => {
   const [dots, setDots] = useState([]);
@@ -21,8 +22,8 @@ const App = () => {
 
   return (
     <div style={{ position: 'relative', height: '100vh' }}>
-      <button onClick={handleAddDot}>Add Dot</button>
-      <button onClick={handleRemoveDot}>Remove Dot</button>
+      <button onClick={handleAddDot} className='nodeButton' id='add'>Add Dot</button>
+      <button onClick={handleRemoveDot} className='nodeButton' id='remove'>Remove Dot</button>
       {dots.map((dot) => (
         <div
           key={dot.id}
@@ -30,6 +31,7 @@ const App = () => {
             position: 'absolute',
             width: '10px',
             height: '10px',
+            boxShadow: '2px 2px lightgray',
             borderRadius: '50%',
             backgroundColor: 'red',
             left: `${dot.x}px`,

@@ -1,0 +1,25 @@
+.nodeButton {
+    border-radius: 20px;
+    color: black;
+    box-shadow: 2px 2px lightgray;
+    padding: 10px 30px 10px 30px;
+    font-size: 100%;
+    margin: 5px 10px 5px 10px;
+    transition: 0.5s;
+    outline: none;
+    position: relative;
+  }
+  #add {
+    border-color: rgb(255, 0, 0);
+  }
+  #remove {
+    border-color: rgb(0, 0, 255);
+  }
+  #add:hover {
+    background-color: rgb(255, 0, 0);
+    color: white;
+  }
+  #remove:hover {
+    color: white;
+    background-color: rgb(0, 0, 255);
+  }
