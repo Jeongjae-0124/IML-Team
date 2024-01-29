@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DotGenerator = () => {
+const App = () => {
   const [dots, setDots] = useState([]);
 
   const handleAddDot = () => {
@@ -41,4 +41,4 @@ const DotGenerator = () => {
   );
 };
 
-export default DotGenerator;
+export default App;
