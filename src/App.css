@@ -1,25 +1,63 @@
-.nodeButton {
-    border-radius: 20px;
-    color: black;
-    box-shadow: 2px 2px lightgray;
-    padding: 10px 30px 10px 30px;
-    font-size: 100%;
-    margin: 5px 10px 5px 10px;
-    transition: 0.5s;
-    outline: none;
-    position: relative;
-  }
-  #add {
-    border-color: rgb(255, 0, 0);
-  }
-  #remove {
-    border-color: rgb(0, 0, 255);
-  }
-  #add:hover {
-    background-color: rgb(255, 0, 0);
-    color: white;
-  }
-  #remove:hover {
-    color: white;
-    background-color: rgb(0, 0, 255);
-  }
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  top: 30;
+  left: 10; 
+  margin-bottom: 30px; 
+}
+
+
+
+.input-container label {
+  margin-right: 10px;
+  justify-content: center;
+  align-items:center;
+}
+
+.input-container input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 50px; 
+  text-align: center;
+}
+
+.dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px; 
+  width: 100%;
+}
+
+.dots-container.top {
+  justify-content: center; 
+}
+
+.dots-container.bottom {
+  justify-content: center; 
+}
+
+.dot {
+  font-size: 2rem; /* Size of dots */
+  padding: 5px; /* Spacing around dots */
+  margin: 0 2px; /* Spacing between dots */
+  display: inline-block; /* Treat the dots like inline elements */
+}
+
+.vertices-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 200px;
+  margin-top: 100px; /* Increase the bottom margin to create more space */
+}
+
+/* If you want the last container to not have a large space below it, you can add this: */
+.vertices-container:last-child {
+  margin-bottom: 0; /* Removes the bottom margin from the last container */
+}
