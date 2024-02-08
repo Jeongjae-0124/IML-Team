@@ -2,45 +2,127 @@ import React, { useState } from 'react';
 import './App.css';
 
 const App = () => {
-  const [dots, setDots] = useState([]);
+  const [topVertices, setTopVertices] = useState(0);
+  const [bottomVertices, setBottomVertices] = useState(0);
 
-  const handleAddDot = () => {
-    const newDot = {
-      id: dots.length + 1,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-    };
+  const MAX_VERTICES = 50; // set to 50 for now because 50 is generally the largest that we can add before vertices start getting pushed outta the window
+  const MIN_VERTICES = 0; // this is to fix a bug where the input was enabling negative numbers in the textbox
 
-    setDots((prevDots) => [...prevDots, newDot]);
-  };
-
-  const handleRemoveDot = () => {
-    if (dots.length > 0) {
-      setDots((prevDots) => prevDots.slice(0, -1)); // Remove the last dot
+  const renderDots = (count) => {
+    if (count > MAX_VERTICES) {
+      count = MAX_VERTICES;
     }
+    return Array.from({ length: count }, (_, index) => (
+      <button key={index} className='dot'></button> // change to button because it made more sense to me than a "•" character. Plus, we can use button's onClick feature for future functionality
+      // <span key={index} className="dot">•</span> 
+    ));
   };
 
   return (
-    <div style={{ position: 'relative', height: '100vh' }}>
-      <button onClick={handleAddDot} className='nodeButton' id='add'>Add Dot</button>
-      <button onClick={handleRemoveDot} className='nodeButton' id='remove'>Remove Dot</button>
-      {dots.map((dot) => (
-        <div
-          key={dot.id}
-          style={{
-            position: 'absolute',
-            width: '10px',
-            height: '10px',
-            boxShadow: '2px 2px lightgray',
-            borderRadius: '50%',
-            backgroundColor: 'red',
-            left: `${dot.x}px`,
-            top: `${dot.y}px`,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+    <>
+    <header>
+      <link rel="preconnect" href="https://fonts.googleapis.com" /> {/* a nice fancy video game style font I found */}
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
+    </header>
+    <body>
+      <div className="container">
+        <div className="input-container">
+          <label htmlFor="top-vertices">Top Vertices:</label>
+          <input
+            id="top-vertices"
+            type="number"
+            value={topVertices}
+            min={MIN_VERTICES}
+            max={MAX_VERTICES} 
+            maxLength={2}
+            onChange={(e) => {
+
+              // fixes a bug where the user can still type a very large number (e.g 1000) into the textbox. 
+              // In this situation the website crashes because it has to render so many vertices so this modification fixes that
+
+              if (Number(e.target.value) > MAX_VERTICES) {
+                e.target.value = MAX_VERTICES;
+                setTopVertices(MAX_VERTICES);
+              } else {
+                setTopVertices(Number(e.target.value))
+              }
+              }}
+          />
+          <button id='addOne' onClick={
+            () => {
+              if (topVertices >= MAX_VERTICES) {
+                return;
+              } else {
+                setTopVertices(topVertices + 1);
+              }
+            }
+          }>+</button>
+          <button id='removeOne' onClick={
+            () => {
+              if (topVertices <= 0) {
+                return;
+              } else {
+                setTopVertices(topVertices - 1);
+              }
+            }
+          }>-</button>
+        </div>
+
+        <div className="input-container">
+          <label htmlFor="bottom-vertices">Bottom Vertices:</label>
+          <input
+            id="bottom-vertices"
+            type="number"
+            value={bottomVertices}
+            min={MIN_VERTICES}
+            max={MAX_VERTICES}
+            maxLength={2}
+            onChange={(e) => {
+
+              // fixes a bug where the user can still type a very large number (e.g 1000) into the textbox. 
+              // In this situation the website crashes because it has to render so many vertices so this modification fixes that
+
+              if (Number(e.target.value) > MAX_VERTICES) {
+                e.target.value = MAX_VERTICES;
+                setBottomVertices(MAX_VERTICES);
+              } else {
+                setBottomVertices(Number(e.target.value))
+              }
+            }}
+          />
+          <button id='addOne' onClick={
+            () => {
+              if (bottomVertices >= MAX_VERTICES) {
+                return;
+              } else {
+                setBottomVertices(bottomVertices + 1);
+              }
+            }
+          }>+</button>
+          <button id='removeOne' onClick={
+            () => {
+              if (bottomVertices <= 0) {
+                return;
+              } else {
+                setBottomVertices(bottomVertices - 1);
+              }
+            }
+          }>-</button>
+        </div>
+        
+        <div className="vertices-container">
+          {renderDots(topVertices)}
+        </div>
+
+        <div className="vertices-container">
+          {renderDots(bottomVertices)}
+        </div>
+      </div>
+    </body>
+    
+    </>
+    );
+}
 
 export default App;
