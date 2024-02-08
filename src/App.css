@@ -2,16 +2,55 @@
   position: relative;
   height: 100vh;
   width: 100%;
+  /* background-color: rgb(176, 229, 248); */
 }
-
+body {
+  background-color: rgb(247, 236, 214);
+}
 .input-container {
   display: flex;
   top: 30;
   left: 10; 
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+label {
+  background-color: rgb(96, 192, 209);
+  text-align: center;
+  padding: 25px 30px 20px 30px;
+  border-radius: 0.5vh;
+  font-size: 1rem;
+  box-shadow: 2px 2px rgb(116, 107, 91);
+  font-family: 'DotGothic16', sans-serif;
 }
 
 
+#addOne {
+  margin: 10px 10px 1px 15px;
+  padding: 20px 60px;
+  position: relative;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: lightcoral;
+  border-color: lightcoral;
+  box-shadow: 1px 1px rgb(116, 107, 91);
+}
+#removeOne {
+  margin: 10px 10px 1px 10px;
+  padding: 20px 60px;
+  position: relative;
+  font-size: 1rem;
+  border-radius: 10px;
+  background-color: lightseagreen;
+  border-color: lightseagreen;
+  box-shadow: 1px 1px rgb(116, 107, 91);
+}
+#addOne:hover {
+  transform: scale(1.1);
+}
+#removeOne:hover {
+  transform: scale(1.1);
+}
 
 .input-container label {
   margin-right: 10px;
@@ -20,23 +59,27 @@
 }
 
 .input-container input {
-  padding: 10px;
+  padding: 17px;
   border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 50px; 
+  border-radius: 5px;
+  width: 90px; 
   text-align: center;
-}
-
-.dots-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50px; 
-  width: 100%;
+  margin-top: 4px;
+  box-shadow: 2px 2px rgb(116, 107, 91);
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 15px;
+  letter-spacing: 3px;
 }
 
 .dots-container.top {
-  justify-content: center; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  
+  
 }
 
 .dots-container.bottom {
@@ -44,20 +87,49 @@
 }
 
 .dot {
-  font-size: 2rem; /* Size of dots */
-  padding: 5px; /* Spacing around dots */
-  margin: 0 2px; /* Spacing between dots */
+  font-size: 5rem; /* Size of dots */
+  padding: 1vh; /* Spacing around dots */
+  width: 20px;
+  height: 20px;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  border-style: solid;
+  border-color: black;
+  border-radius: 50%;
+  /* margin: 0 0.5vh; Spacing between dots */
   display: inline-block; /* Treat the dots like inline elements */
+  position: relative;
+  box-shadow: 2px 2px gray;
+}
+
+.dot:hover {
+  transform: scale(1.5);
 }
 
 .vertices-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 200px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  height: 50px;
+  overflow:hidden;
+  margin-bottom: 40vh;
   margin-top: 100px; /* Increase the bottom margin to create more space */
+
 }
 
 /* If you want the last container to not have a large space below it, you can add this: */
 .vertices-container:last-child {
   margin-bottom: 0; /* Removes the bottom margin from the last container */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
