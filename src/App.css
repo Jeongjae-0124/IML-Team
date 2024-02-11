@@ -11,10 +11,15 @@ body {
   display: flex;
   top: 30;
   left: 10; 
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   font-weight: bold;
+
 }
 label {
+
+  margin-left: 75vw; /* This was the easiest way I found to move everything to the right (that doesn't break everything)
+  , if we don't want to use margins we would have to change the positioning of certain components which would require a revamp of the CSS */
+
   background-color: rgb(96, 192, 209);
   text-align: center;
   padding: 25px 30px 20px 30px;
@@ -22,11 +27,13 @@ label {
   font-size: 1rem;
   box-shadow: 2px 2px rgb(116, 107, 91);
   font-family: 'DotGothic16', sans-serif;
+  
+  scale: 0.95;
 }
 
 
 #addOne {
-  margin: 10px 10px 1px 15px;
+  margin: 5px 10px 0px 15px;
   padding: 20px 60px;
   position: relative;
   font-size: 1rem;
@@ -34,9 +41,10 @@ label {
   background-color: lightcoral;
   border-color: lightcoral;
   box-shadow: 1px 1px rgb(116, 107, 91);
+
 }
 #removeOne {
-  margin: 10px 10px 1px 10px;
+  margin: 5px 10px 0px 10px;
   padding: 20px 60px;
   position: relative;
   font-size: 1rem;
@@ -44,6 +52,7 @@ label {
   background-color: lightseagreen;
   border-color: lightseagreen;
   box-shadow: 1px 1px rgb(116, 107, 91);
+
 }
 #addOne:hover {
   transform: scale(1.1);
@@ -72,7 +81,14 @@ label {
 }
 
 .dots-container.top {
-  justify-content: center; 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  
+  
 }
 
 .dots-container.bottom {
@@ -101,7 +117,11 @@ label {
 
 .vertices-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+  height: 50px;
+  overflow:hidden;
   margin-bottom: 40vh;
   margin-top: 100px; /* Increase the bottom margin to create more space */
 }

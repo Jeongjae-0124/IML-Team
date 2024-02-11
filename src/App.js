@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 
+
 const App = () => {
-  const [topVertices, setTopVertices] = useState(0);
-  const [bottomVertices, setBottomVertices] = useState(0);
+  const [topVertices, setTopVertices] = useState(3);
+  const [bottomVertices, setBottomVertices] = useState(3);
 
   const MAX_VERTICES = 50; // set to 50 for now because 50 is generally the largest that we can add before vertices start getting pushed outta the window
-  const MIN_VERTICES = 0; // this is to fix a bug where the input was enabling negative numbers in the textbox
+  const MIN_VERTICES = 3; // this is to fix a bug where the input was enabling negative numbers in the textbox
 
   const renderDots = (count) => {
     if (count > MAX_VERTICES) {
@@ -31,7 +32,6 @@ const App = () => {
           <label htmlFor="top-vertices">Top Vertices:</label>
           <input
             id="top-vertices"
-            type="number"
             value={topVertices}
             min={MIN_VERTICES}
             max={MAX_VERTICES} 
@@ -44,6 +44,12 @@ const App = () => {
               if (Number(e.target.value) > MAX_VERTICES) {
                 e.target.value = MAX_VERTICES;
                 setTopVertices(MAX_VERTICES);
+              } else {
+                setTopVertices(Number(e.target.value))
+              }
+              if (Number(e.target.value) < MIN_VERTICES) {
+                e.target.value = MIN_VERTICES;
+                setTopVertices(MIN_VERTICES);
               } else {
                 setTopVertices(Number(e.target.value))
               }
@@ -60,7 +66,7 @@ const App = () => {
           }>+</button>
           <button id='removeOne' onClick={
             () => {
-              if (topVertices <= 0) {
+              if (topVertices <= MIN_VERTICES) {
                 return;
               } else {
                 setTopVertices(topVertices - 1);
@@ -89,6 +95,12 @@ const App = () => {
               } else {
                 setBottomVertices(Number(e.target.value))
               }
+              if (Number(e.target.value) < MIN_VERTICES) {
+                e.target.value = MIN_VERTICES;
+                setBottomVertices(MIN_VERTICES);
+              } else {
+                setBottomVertices(Number(e.target.value))
+              }
             }}
           />
           <button id='addOne' onClick={
@@ -102,7 +114,7 @@ const App = () => {
           }>+</button>
           <button id='removeOne' onClick={
             () => {
-              if (bottomVertices <= 0) {
+              if (bottomVertices <= 3) {
                 return;
               } else {
                 setBottomVertices(bottomVertices - 1);
